@@ -118,7 +118,7 @@ footer {
 @media (max-width: 600px) {
     .logo-container {
         padding: 10px; /* Padding lebih kecil untuk layar kecil */
-        margin: -43px;
+        margin: -67px;
     }
 
     .container {
