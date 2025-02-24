@@ -41,7 +41,7 @@ function hitungPendapatan() {
     // Logika perhitungan bonus
     if (durasi === "15_30") {
         if (berlian >= 50000 && berlian <= 3000000) {
-            totalBonus = Math.round(berlian * 1.575); // Bonus untuk 15 Hari 30 Jam
+            totalBonus = Math.round(berlian * 1.575); // Bonus untuk 15 Hari 30 Jam (50.000+ berlian)
             notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
             notifikasiBonus.classList.remove("hidden");
         } else {
@@ -50,7 +50,7 @@ function hitungPendapatan() {
             notifikasiError.classList.remove("hidden");
         }
     } else if (durasi === "20_80") {
-        if (berlian >= 25000 && berlian < 50000) {
+        if (berlian >= 25000 && berlian <= 49999) {
             totalBonus = 50000; // Bonus tetap Rp 50.000 untuk 20 Hari 80 Jam (25.000 - 49.999 berlian)
             notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
             notifikasiBonus.classList.remove("hidden");
@@ -64,7 +64,7 @@ function hitungPendapatan() {
             notifikasiError.classList.remove("hidden");
         }
     } else if (durasi === "22_100") {
-        if (berlian >= 25000 && berlian < 50000) {
+        if (berlian >= 25000 && berlian <= 49999) {
             totalBonus = 50000; // Bonus tetap Rp 50.000 untuk 22 Hari 100 Jam (25.000 - 49.999 berlian)
             notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
             notifikasiBonus.classList.remove("hidden");
