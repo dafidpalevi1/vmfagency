@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Logo yang bisa diklik -->
+    <div class="logo-container">
+        <a href="https://kalkulatorvmf.netlify.app">
+            <img src="images/logo.png" alt="Logo VMF Agency" class="logo">
+        </a>
+    </div>
+
+    <!-- Container Utama -->
     <div class="container">
         <h2>KALKULATOR REWARDS <br>
             <br>
@@ -15,7 +23,7 @@
         <input type="text" id="nama" placeholder="Masukkan nama anda">
         <label for="berlian">Masukkan Jumlah Berlian:</label>
         <input type="text" id="berlian" placeholder="Masukkan jumlah berlian">
-        <label for="durasi">Pilih Valid day & Durasi:</label>
+        <label for="durasi">Pilih Valid Day & Durasi:</label>
         <select id="durasi">
             <option value="15_30">15 Hari 30 Jam</option>
             <option value="20_80">20 Hari 80 Jam</option>
@@ -25,6 +33,8 @@
         <p id="notifikasi-bonus" class="hidden"></p>
         <h3 id="hasil">Total Bonus: Rp 0</h3>
         <p id="notifikasi-error" class="hidden"></p>
+        
+        <!-- Ketentuan Penting -->
         <div class="ketentuan">
             <h3>Ketentuan Penting:</h3>
             <ul>
@@ -36,8 +46,9 @@
             </ul>
         </div>
     </div>
-    <footer>VMF AGENCY 2025 <br>© Copyright All Rights 
-        </footer>
+
+    <!-- Footer -->
+    <footer>VMF AGENCY 2025 <br>© Copyright All Rights</footer>
     <script src="script.js"></script>
 </body>
 </html>

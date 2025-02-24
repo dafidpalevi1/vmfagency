@@ -11,9 +11,29 @@ body {
     min-height: 100vh;
 }
 
+/* Container Logo */
+.logo-container {
+    width: 100%;
+    text-align: center; /* Logo di tengah untuk semua layar */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    max-width: 150px; /* Sesuaikan ukuran logo */
+    height: auto;
+    cursor: pointer; /* Kursor pointer saat dihover */
+    transition: transform 0.2s ease; /* Efek animasi saat dihover */
+}
+
+.logo:hover {
+    transform: scale(1.05); /* Efek zoom kecil saat dihover */
+}
+
+/* Container Utama */
 .container {
     width: 90%;
-    max-width: 500px;
+    max-width: 600px; /* Lebar maksimum untuk layar besar */
     margin: 20px auto;
     padding: 30px;
     background: white;
@@ -70,13 +90,18 @@ button:hover {
     text-align: left;
     font-size: 14px;
 }
+
 .ketentuan h3 {
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
+
 .ketentuan ul {
     padding-left: 20px;
+    margin: 0;
 }
+
 .ketentuan li {
     margin-bottom: 8px;
 }
@@ -86,10 +111,16 @@ footer {
     text-align: center;
     width: 100%;
     color: #666;
+    font-size: 14px;
 }
 
 /* Media Queries untuk Responsiveness */
 @media (max-width: 600px) {
+    .logo-container {
+        padding: 10px; /* Padding lebih kecil untuk layar kecil */
+        margin: -43px;
+    }
+
     .container {
         width: 100%;
         margin: 10px auto;
@@ -98,12 +129,20 @@ footer {
 
     label, select, input, button {
         width: calc(100% - 20px);
-        margin: 12px auto;
-        padding: 12px;
+        margin: 10px auto;
+        padding: 10px;
     }
 
     button {
         font-size: 14px;
+    }
+
+    .ketentuan {
+        font-size: 12px;
+    }
+
+    .ketentuan h3 {
+        font-size: 16px;
     }
 }
 
@@ -114,11 +153,19 @@ footer {
 
     label, select, input, button {
         width: calc(100% - 16px);
-        margin: 10px auto;
-        padding: 10px;
+        margin: 8px auto;
+        padding: 8px;
     }
 
     button {
         font-size: 12px;
+    }
+
+    .ketentuan {
+        font-size: 11px;
+    }
+
+    .ketentuan h3 {
+        font-size: 14px;
     }
 }
