@@ -24,7 +24,7 @@ function hitungPendapatan() {
     const berlian = parseInt(hapusFormat(berlianInput)); // Hapus titik sebelum konversi ke number
     const notifikasiBonus = document.getElementById("notifikasi-bonus");
     const notifikasiError = document.getElementById("notifikasi-error");
-    let pendapatan = 0;
+    let totalBonus = 0;
 
     // Sembunyikan semua notifikasi awal
     notifikasiBonus.classList.add("hidden");
@@ -34,36 +34,43 @@ function hitungPendapatan() {
     if (berlian > 3000000) {
         notifikasiError.innerText = "Berlian Anda melampaui batas perhitungan agency dari 3.000.000 berlian.";
         notifikasiError.classList.remove("hidden");
-        document.getElementById("hasil").innerText = "Pendapatan: Rp 0";
+        document.getElementById("hasil").innerText = "Total Bonus: Rp 0";
         return; // Hentikan eksekusi fungsi
     }
 
-    // Logika perhitungan pendapatan
-    if (durasi === "15_30" && berlian < 25000) {
-        pendapatan = 0;
-        notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
-        notifikasiError.classList.remove("hidden");
-    } else if ((durasi === "20_80" || durasi === "22_100") && berlian >= 25000 && berlian < 50000) {
-        pendapatan = Math.round(berlian * 2); // Bulatkan hasil
-        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
-        notifikasiBonus.classList.remove("hidden");
-    } else if (durasi === "15_30" && berlian >= 50000 && berlian <= 3000000) {
-        pendapatan = Math.round(berlian * 1.575); // Bulatkan hasil
-        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
-        notifikasiBonus.classList.remove("hidden");
-    } else if (durasi === "20_80" && berlian >= 50000 && berlian <= 3000000) {
-        pendapatan = Math.round(berlian * 2.625); // Bulatkan hasil
-        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
-        notifikasiBonus.classList.remove("hidden");
-    } else if (durasi === "22_100" && berlian >= 50000 && berlian <= 3000000) {
-        pendapatan = Math.round(berlian * 3.15); // Bulatkan hasil
-        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
-        notifikasiBonus.classList.remove("hidden");
-    } else {
-        notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
-        notifikasiError.classList.remove("hidden");
+    // Logika perhitungan bonus
+    if (durasi === "15_30") {
+        if (berlian >= 50000 && berlian <= 3000000) {
+            totalBonus = Math.round(berlian * 1.575); // Bonus untuk 15 Hari 30 Jam
+            notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+            notifikasiBonus.classList.remove("hidden");
+        } else {
+            totalBonus = 0;
+            notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+            notifikasiError.classList.remove("hidden");
+        }
+    } else if (durasi === "20_80") {
+        if (berlian > 25000 && berlian <= 3000000) {
+            totalBonus = Math.round(berlian * 2.625); // Bonus untuk 20 Hari 80 Jam (di atas 25.000 berlian)
+            notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+            notifikasiBonus.classList.remove("hidden");
+        } else {
+            totalBonus = 0;
+            notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+            notifikasiError.classList.remove("hidden");
+        }
+    } else if (durasi === "22_100") {
+        if (berlian > 25000 && berlian <= 3000000) {
+            totalBonus = Math.round(berlian * 3.15); // Bonus untuk 22 Hari 100 Jam (di atas 25.000 berlian)
+            notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+            notifikasiBonus.classList.remove("hidden");
+        } else {
+            totalBonus = 0;
+            notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+            notifikasiError.classList.remove("hidden");
+        }
     }
 
-    // Tampilkan hasil pendapatan
-    document.getElementById("hasil").innerText = "Pendapatan: Rp " + formatAngka(pendapatan);
+    // Tampilkan total bonus
+    document.getElementById("hasil").innerText = "Total Bonus: Rp " + formatAngka(totalBonus);
 }
