@@ -53,10 +53,16 @@ button:hover {
     display: none;
 }
 
-#notifikasi {
+#notifikasi-bonus {
     margin-top: 20px;
     font-weight: bold;
-    white-space: pre-line; /* Agar teks bisa sejajar */
+    color: green;
+}
+
+#notifikasi-error {
+    margin-top: 20px;
+    font-weight: bold;
+    color: red;
 }
 
 footer {

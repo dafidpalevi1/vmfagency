@@ -1,16 +1,38 @@
+// Fungsi untuk memformat angka dengan titik setiap 3 digit
+function formatAngka(angka) {
+    return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+// Fungsi untuk menghapus format titik dan mengembalikan angka asli
+function hapusFormat(angka) {
+    return angka.replace(/\./g, "");
+}
+
+// Event listener untuk memformat input berlian secara otomatis
+document.getElementById("berlian").addEventListener("input", function (e) {
+    let nilai = e.target.value;
+    let nilaiTanpaTitik = hapusFormat(nilai);
+    if (!isNaN(nilaiTanpaTitik)) {
+        e.target.value = formatAngka(nilaiTanpaTitik);
+    }
+});
+
 function hitungPendapatan() {
     const nama = document.getElementById("nama").value;
     const durasi = document.getElementById("durasi").value;
-    const berlian = parseInt(document.getElementById("berlian").value);
-    const notifikasi = document.getElementById("notifikasi");
+    const berlian = parseInt(hapusFormat(document.getElementById("berlian").value));
+    const notifikasiBonus = document.getElementById("notifikasi-bonus");
+    const notifikasiError = document.getElementById("notifikasi-error");
     let pendapatan = 0;
-    let bonusMessage = "";
+
+    // Sembunyikan semua notifikasi awal
+    notifikasiBonus.classList.add("hidden");
+    notifikasiError.classList.add("hidden");
 
     // Validasi jika berlian lebih dari 3.000.000
     if (berlian > 3000000) {
-        bonusMessage = "Berlian Anda sudah melampaui batas bonus dari agency.";
-        notifikasi.style.color = "red";
-        notifikasi.classList.remove("hidden");
+        notifikasiError.innerText = "Berlian Anda melampaui batas perhitungan agency dari 3.000.000 berlian.";
+        notifikasiError.classList.remove("hidden");
         document.getElementById("hasil").innerText = "Pendapatan: Rp 0";
         return; // Hentikan eksekusi fungsi
     }
@@ -18,32 +40,29 @@ function hitungPendapatan() {
     // Logika perhitungan pendapatan
     if (durasi === "15_30" && berlian < 25000) {
         pendapatan = 0;
-        bonusMessage = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+        notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+        notifikasiError.classList.remove("hidden");
     } else if ((durasi === "20_80" || durasi === "22_100") && berlian >= 25000 && berlian < 50000) {
         pendapatan = berlian * 2;
-        bonusMessage = `Selamat ${nama}, Anda mendapat bonus dengan nilai:\nRp ${pendapatan.toLocaleString("id-ID")}`;
+        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+        notifikasiBonus.classList.remove("hidden");
     } else if (durasi === "15_30" && berlian >= 50000 && berlian <= 3000000) {
         pendapatan = berlian * 1.575;
-        bonusMessage = `Selamat ${nama}, Anda mendapat bonus dengan nilai:\nRp ${pendapatan.toLocaleString("id-ID")}`;
+        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+        notifikasiBonus.classList.remove("hidden");
     } else if (durasi === "20_80" && berlian >= 50000 && berlian <= 3000000) {
         pendapatan = berlian * 2.625;
-        bonusMessage = `Selamat ${nama}, Anda mendapat bonus dengan nilai:\nRp ${pendapatan.toLocaleString("id-ID")}`;
+        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+        notifikasiBonus.classList.remove("hidden");
     } else if (durasi === "22_100" && berlian >= 50000 && berlian <= 3000000) {
         pendapatan = berlian * 3.15;
-        bonusMessage = `Selamat ${nama}, Anda mendapat bonus dengan nilai:\nRp ${pendapatan.toLocaleString("id-ID")}`;
+        notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
+        notifikasiBonus.classList.remove("hidden");
     } else {
-        bonusMessage = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+        notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
+        notifikasiError.classList.remove("hidden");
     }
 
-    // Tampilkan hasil dan notifikasi
-    document.getElementById("hasil").innerText = "Pendapatan: Rp " + pendapatan.toLocaleString("id-ID");
-    notifikasi.innerText = bonusMessage;
-    notifikasi.classList.remove("hidden");
-
-    // Warna notifikasi berdasarkan bonus
-    if (bonusMessage.includes("Selamat")) {
-        notifikasi.style.color = "green";
-    } else {
-        notifikasi.style.color = "red";
-    }
+    // Tampilkan hasil pendapatan
+    document.getElementById("hasil").innerText = "Pendapatan: Rp " + formatAngka(pendapatan);
 }

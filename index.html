@@ -14,7 +14,7 @@
         <label for="nama">Masukkan Nama Anda:</label>
         <input type="text" id="nama" placeholder="Masukkan nama anda">
         <label for="berlian">Masukkan Jumlah Berlian:</label>
-        <input type="number" id="berlian" placeholder="Masukkan jumlah berlian">
+        <input type="text" id="berlian" placeholder="Masukkan jumlah berlian">
         <label for="durasi">Pilih Durasi:</label>
         <select id="durasi">
             <option value="15_30">15 Hari 30 Jam</option>
@@ -22,8 +22,9 @@
             <option value="22_100">22 Hari 100 Jam</option>
         </select>
         <button onclick="hitungPendapatan()">Hitung</button>
+        <p id="notifikasi-bonus" class="hidden"></p>
         <h3 id="hasil">Pendapatan: Rp 0</h3>
-        <p id="notifikasi" class="hidden"></p>
+        <p id="notifikasi-error" class="hidden"></p>
     </div>
     <footer>© Copyright All Rights VMF AGENCY</footer>
     <script src="script.js"></script>
