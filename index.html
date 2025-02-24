@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,9 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <h2>Kalkulator <br>
+        <h2>KALKULATOR <br>
             <br>
             VMF AGENCY</h2>
+        <label for="nama">Masukkan Nama Anda:</label>
+        <input type="text" id="nama" placeholder="Masukkan nama anda">
         <label for="berlian">Masukkan Jumlah Berlian:</label>
         <input type="number" id="berlian" placeholder="Masukkan jumlah berlian">
         <label for="durasi">Pilih Durasi:</label>
@@ -22,10 +23,9 @@
         </select>
         <button onclick="hitungPendapatan()">Hitung</button>
         <h3 id="hasil">Pendapatan: Rp 0</h3>
-        <p id="notifikasi" class="hidden">Anda belum mendapatkan bonus.</p>
+        <p id="notifikasi" class="hidden"></p>
     </div>
+    <footer>© Copyright All Rights VMF AGENCY</footer>
     <script src="script.js"></script>
-
-    <Footer>© Copyright All Rights VMF AGENCY</Footer>
 </body>
 </html>
