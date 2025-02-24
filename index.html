@@ -1,0 +1,29 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator VMF AGENCY</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Kalkulator VMF AGENCY</h2>
+        <label for="berlian">Masukkan Jumlah Berlian:</label>
+        <input type="number" id="berlian" placeholder="Masukkan jumlah berlian">
+        <label for="durasi">Pilih Durasi:</label>
+        <select id="durasi">
+            <option value="15_30">15 Hari 30 Jam</option>
+            <option value="20_80">20 Hari 80 Jam</option>
+            <option value="22_100">22 Hari 100 Jam</option>
+        </select>
+        <button onclick="hitungPendapatan()">Hitung</button>
+        <h3 id="hasil">Pendapatan: Rp 0</h3>
+        <p id="notifikasi" class="hidden">Anda belum mendapatkan bonus.</p>
+    </div>
+    <script src="script.js"></script>
+
+    <Footer>© Copyright All Rights VMF AGENCY</Footer>
+</body>
+</html>
