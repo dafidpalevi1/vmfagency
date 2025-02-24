@@ -20,7 +20,8 @@ document.getElementById("berlian").addEventListener("input", function (e) {
 function hitungPendapatan() {
     const nama = document.getElementById("nama").value;
     const durasi = document.getElementById("durasi").value;
-    const berlian = parseInt(hapusFormat(document.getElementById("berlian").value));
+    const berlianInput = document.getElementById("berlian").value;
+    const berlian = parseInt(hapusFormat(berlianInput)); // Hapus titik sebelum konversi ke number
     const notifikasiBonus = document.getElementById("notifikasi-bonus");
     const notifikasiError = document.getElementById("notifikasi-error");
     let pendapatan = 0;
@@ -43,19 +44,19 @@ function hitungPendapatan() {
         notifikasiError.innerText = `${nama}, Anda belum mendapatkan bonus bulan ini, tetap semangat ya live streamingnya!`;
         notifikasiError.classList.remove("hidden");
     } else if ((durasi === "20_80" || durasi === "22_100") && berlian >= 25000 && berlian < 50000) {
-        pendapatan = berlian * 2;
+        pendapatan = Math.round(berlian * 2); // Bulatkan hasil
         notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
         notifikasiBonus.classList.remove("hidden");
     } else if (durasi === "15_30" && berlian >= 50000 && berlian <= 3000000) {
-        pendapatan = berlian * 1.575;
+        pendapatan = Math.round(berlian * 1.575); // Bulatkan hasil
         notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
         notifikasiBonus.classList.remove("hidden");
     } else if (durasi === "20_80" && berlian >= 50000 && berlian <= 3000000) {
-        pendapatan = berlian * 2.625;
+        pendapatan = Math.round(berlian * 2.625); // Bulatkan hasil
         notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
         notifikasiBonus.classList.remove("hidden");
     } else if (durasi === "22_100" && berlian >= 50000 && berlian <= 3000000) {
-        pendapatan = berlian * 3.15;
+        pendapatan = Math.round(berlian * 3.15); // Bulatkan hasil
         notifikasiBonus.innerText = `Selamat ${nama}, Anda mendapatkan bonus!`;
         notifikasiBonus.classList.remove("hidden");
     } else {
